@@ -1,0 +1,1 @@
+print("Its a fresh start to the day, lets check the steel corrosion levels.")
