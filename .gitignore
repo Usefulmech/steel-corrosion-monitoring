@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+corrosion_env/
+*.egg-info/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Model files (too large for GitHub)
+*.pt
+*.pth
+*.onnx
+*.weights
+models/*.pt
+models/*.onnx
+
+# Dataset files (too large)
+data/raw/
+data/processed/
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.avi
+
+# Roboflow downloads
+*-*/  # Pattern for Roboflow dataset folders
+
+# Environment variables and secrets
+.env
+*.key
+*_config_secret.yaml
+credentials.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Outputs
+output/
+runs/
+results/sample_outputs/*.jpg
+results/sample_outputs/*.png
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Keep important folders even if empty
+!data/.gitkeep
+!models/.gitkeep
+!results/.gitkeep
