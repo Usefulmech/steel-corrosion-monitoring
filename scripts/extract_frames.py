@@ -30,7 +30,7 @@ def extract_frames_from_video(video_path, output_dir, frame_interval=60):
     cap = cv2.VideoCapture(video_path)
     
     if not cap.isOpened():
-        print(f"❌ Error: Could not open video {video_path}")
+        print(f" Error: Could not open video {video_path}")
         return
     
     # Get video properties
@@ -38,7 +38,7 @@ def extract_frames_from_video(video_path, output_dir, frame_interval=60):
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     duration = total_frames / fps if fps > 0 else 0
     
-    print(f"📹 Video Info:")
+    print(f" Video Info:")
     print(f"   FPS: {fps}")
     print(f"   Total Frames: {total_frames}")
     print(f"   Duration: {duration:.2f} seconds")
@@ -68,7 +68,7 @@ def extract_frames_from_video(video_path, output_dir, frame_interval=60):
     
     cap.release()
     
-    print(f"\n✅ Extraction Complete!")
+    print(f"\n Extraction Complete!")
     print(f"   Total frames extracted: {saved_count}")
     print(f"   Saved to: {output_dir}")
     print(f"   Now upload these images to Roboflow for annotation!")
@@ -95,14 +95,14 @@ def extract_frames_from_rtsp(rtsp_url, output_dir, duration_seconds=300,
     """
     os.makedirs(output_dir, exist_ok=True)
     
-    print(f"📡 Connecting to RTSP stream: {rtsp_url}")
+    print(f" Connecting to RTSP stream: {rtsp_url}")
     cap = cv2.VideoCapture(rtsp_url)
     
     if not cap.isOpened():
-        print("❌ Could not connect to RTSP stream!")
+        print(" Could not connect to RTSP stream!")
         return
     
-    print(f"✅ Connected! Recording for {duration_seconds} seconds...")
+    print(f" Connected! Recording for {duration_seconds} seconds...")
     
     fps = cap.get(cv2.CAP_PROP_FPS) or 25  # Default to 25 if not available
     max_frames = int(duration_seconds * fps)
@@ -113,7 +113,7 @@ def extract_frames_from_rtsp(rtsp_url, output_dir, duration_seconds=300,
     while frame_count < max_frames:
         ret, frame = cap.read()
         if not ret:
-            print("⚠️ Lost connection, stopping...")
+            print(" Lost connection, stopping...")
             break
         
         if frame_count % frame_interval == 0:
@@ -130,7 +130,7 @@ def extract_frames_from_rtsp(rtsp_url, output_dir, duration_seconds=300,
         frame_count += 1
     
     cap.release()
-    print(f"\n✅ Capture complete! Saved {saved_count} frames to {output_dir}")
+    print(f"\n Capture complete! Saved {saved_count} frames to {output_dir}")
 
 
 if __name__ == "__main__":

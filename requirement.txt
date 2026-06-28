@@ -1,16 +1,54 @@
-# Core Dependencies
-ultralytics>=8.0.0
-opencv-python>=4.8.0
-numpy>=1.24.0
-pillow>=10.0.0
-matplotlib>=3.7.0
-pyyaml>=6.0
+# ============================================================
+#  Steel Corrosion Monitoring System — Python Requirements
+#  Install with:  pip install -r requirement.txt
+# ============================================================
 
-# Data handling
-pandas>=2.0.0
-roboflow>=1.1.0
 
-# Optional (for development)
-jupyter>=1.0.0
-pytest>=7.4.0
-black>=23.0.0
+# ------------------------------------------------------------
+# Core ML & Computer Vision  (src/, scripts/)
+# Used by: cascade_inference.py, rtsp_monitor.py, live_demo.py,
+#          extract_frames.py
+# ------------------------------------------------------------
+ultralytics>=8.0.0          # YOLOv8 / YOLOv12 — detection & classification
+opencv-python>=4.8.0        # Frame capture, CLAHE, drawing, RTSP streams
+numpy>=1.24.0               # Arrays, FPS smoothing, image math
+pillow>=10.0.0              # Image I/O helper for Ultralytics internals
+
+
+# ------------------------------------------------------------
+# Backend / API Server  (src/api_server.py)
+# ------------------------------------------------------------
+flask>=2.3.0                # REST API & telemetry broadcast server
+flask-cors>=4.0.0           # Cross-origin requests from React frontend
+
+
+# ------------------------------------------------------------
+# HTTP Communication  (src/cascade_inference.py, rtsp_monitor.py)
+# ------------------------------------------------------------
+requests>=2.31.0            # POST detections from inference to Flask API
+
+
+# ------------------------------------------------------------
+# Data Pipeline & Dataset Tools  (scripts/)
+# Used by: merge_datasets.py
+# ------------------------------------------------------------
+pyyaml>=6.0                 # Read/write YOLO data.yaml configs
+split-folders>=0.6.0        # Train / val / test dataset splitting
+roboflow>=1.1.0             # Dataset download & upload from Roboflow
+
+
+# ------------------------------------------------------------
+# Visualisation & Analysis  (notebook/)
+# ------------------------------------------------------------
+matplotlib>=3.7.0           # Training curves & result plots
+pandas>=2.0.0               # Metrics dataframes & CSV logging
+seaborn>=0.12.0             # Confusion matrix & distribution plots
+
+
+# ------------------------------------------------------------
+# Development & Testing
+# ------------------------------------------------------------
+jupyter>=1.0.0              # Training & EDA notebooks
+ipykernel>=6.0.0            # Jupyter kernel support
+pytest>=7.4.0               # Unit & integration tests
+black>=23.0.0               # Code formatter
